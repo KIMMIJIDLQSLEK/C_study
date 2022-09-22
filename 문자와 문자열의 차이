@@ -1,0 +1,33 @@
+2.char로 문자와 문자열 나타내기
+
+#include<iostream>
+
+using namespace std;
+
+
+//문자와 문자열의 차이
+
+/*
+
+문자: ''(작은 따옴표)를 사용한다. 반드시 하나의 문자만!! ex) 'a'
+
+문자열: " "(쌍 따옴표)를 사용한다. 여러개의 문자를 배열로 표현! ex) "abc"
+
+*/
+
+int main() {
+
+	char a='a';
+	char str[10] = "abcdef";
+
+ 
+
+	cout << a<<endl;
+
+	cout << str;
+
+ 
+
+}
+
+ 
