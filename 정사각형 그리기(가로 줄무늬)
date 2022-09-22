@@ -1,0 +1,19 @@
+//입력
+//for 문을 돌려 홀수일경우 *,짝수일경우 @출력
+ 
+#include<iostream>
+using namespace std;
+ 
+int main()
+{
+    int n;
+    cin >> n;
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++) {
+            if (i % 2 == 0) cout << '@'; //짝수일경우
+            else cout << '*'; //홀수일경우
+        }
+        cout << endl;
+    }
+}
