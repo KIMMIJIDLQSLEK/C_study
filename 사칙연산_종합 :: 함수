@@ -1,0 +1,31 @@
+//정수 두개 입력
+//덧셈, 뺄셈, 곱셈, 나눗셈 함수
+//나눗셈 함수일경우 나누는 값이 0일경우 aborted/ 실수형의 값 리턴
+// 나머지 함수들 정수형 리턴
+ 
+#include<iostream>
+using namespace std;
+ 
+int add(int a, int b) {
+    return a + b;
+}
+int sub(int a, int b) {
+    return a - b;
+}
+int mul(int a, int b) {
+    return a * b;
+}
+double divide(int a, int b) {
+    cout << fixed;
+    cout.precision(3);
+    return (double)a/b;
+}
+int main() {
+    int a, b;
+    cin >> a>> b;
+    cout << add(a, b) << endl;
+    cout << sub(a, b)<<endl;
+    cout << mul(a, b)<<endl ;
+    if(b == 0) cout << "aborted";
+    else cout << divide(a, b);
+}
