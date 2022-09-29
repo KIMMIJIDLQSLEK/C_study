@@ -1,0 +1,18 @@
+//4개의 값 입력받아 최대값 출력하는 함수 
+#include<iostream>
+using namespace std;
+ 
+void maxx(int arr[4]) {
+    int max_num = arr[0];
+    for (int i = 0; i < 4; i++) {
+        if (max_num < arr[i]) max_num = arr[i];
+    }
+    cout << max_num;
+}
+int main()
+{
+    int arr[4];
+    for (int i = 0; i < 4; i++) cin >> arr[i];
+    maxx(arr);
+    return 0;
+}
