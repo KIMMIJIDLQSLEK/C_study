@@ -1,0 +1,17 @@
+#include<iostream>
+using namespace std;
+
+int main() {
+	char grade = 'C';
+	switch (grade) {
+	case 'A':
+	case 'B':
+	case 'C':
+	case 'D':
+		cout << "합격";
+		break;
+	case 'F':
+		cout << "불합격";
+		break;
+	}
+}
