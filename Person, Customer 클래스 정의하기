@@ -1,0 +1,171 @@
+Person, Customer 클래스 정의하기
+상속과 생성자 호출을 이용하여 Person, Customer 클래스를 정의하라.
+
+Person 클래스는 개인 정보를 저장한다.
+
+Customer 클래스는 고객 정보를 저장한다.
+
+Customer 클래스는 Person 클래스를 상속받는다.
+
+ 
+
+Person 클래스의 멤버 변수는 아래와 같다.
+
+1. 이름
+
+2. 전화번호
+
+Person 클래스의 멤버 함수는 아래와 같다.
+
+1. Person 클래스 생성자
+
+2. 개인 정보 출력
+
+ 
+
+Customer 클래스의 멤버 변수는 아래와 같다.
+
+1. 고객 번호
+
+2. 마일리지 점수
+
+Customer 클래스의 멤버 함수는 아래와 같다.
+
+1. Customer 클래스 생성자
+
+2. 고객 정보 출력
+
+ 
+아래의 main 함수를 참고하여 클래스를 작성하라.
+ 
+
+int main()
+
+{
+
+    string name, phone;
+
+    int member, mileage;
+
+    cin>>name>>phone;
+
+    Person per(name,phone);
+
+    per.ShowInfo();                                                       // 개인 정보 출력
+
+    cin>>name>>phone>>member>>mileage;
+
+    Customer cus(name,phone,member,mileage);      
+
+    cus.ShowInfo();                                                       // 고객 정보 출력
+
+    return 0;
+
+ 
+
+}
+
+ 
+Input
+첫 번째 줄에는 개인 정보를 입력 받는다.
+
+두 번째 줄에는 고객 정보를 입력 받는다.
+
+이름, 전화번호는 string 형으로 선언한다.
+
+고객번호와 마일리지 점수는 int 형으로 선언한다.
+
+ 
+
+Output
+1~2번째 줄에는 개인 정보를 출력한다.
+
+3번째 줄부터는 고객 정보를 출력한다.
+
+ 
+
+Sample Input
+Kim 010-1234-5678
+
+Lee 010-2345-6789 20141028 5000
+
+ 
+Sample Output
+Name: Kim
+
+Phone: 010-1234-5678
+
+Name: Lee
+
+Phone: 010-2345-6789
+
+Member: 20141028
+
+Mileage: 5000
+
+------------------------------------------------
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+class Person
+{
+private:
+    string name;
+    string phone;
+public:
+    Person(string name, string phone) :name(name), phone(phone) {};
+ 
+    void ShowInfo()
+    {
+        cout << "Name: " << name << endl;
+        cout << "Phone: " << phone << endl;
+ 
+    }
+ 
+};
+ 
+class Customer : public Person
+{
+private:
+    int member;
+    int mileage;
+ 
+public:
+    Customer(string name, string phone, int member, int mileage) :Person(name, phone), member(member), mileage(mileage) {};
+ 
+    void ShowInfo()
+    {
+        Person::ShowInfo();
+        cout << "Member: "<< member << endl;
+        cout << "Mileage: " << mileage << endl;
+ 
+    }
+ 
+};
+ 
+int main()
+ 
+{
+ 
+    string name, phone;
+ 
+    int member, mileage;
+ 
+    cin >> name >> phone;
+ 
+    Person per(name, phone);
+ 
+    per.ShowInfo();                                                       // 개인 정보 출력
+ 
+    cin >> name >> phone >> member >> mileage;
+ 
+    Customer cus(name, phone, member, mileage);
+ 
+    cus.ShowInfo();                                                       // 고객 정보 출력
+ 
+    return 0;
+ 
+ 
+ 
+}
