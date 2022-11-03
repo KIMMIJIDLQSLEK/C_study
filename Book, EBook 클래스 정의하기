@@ -1,0 +1,167 @@
+Book, EBook 클래스 정의하기
+상속과 생성자 호출을 이용하여 Book 클래스와 EBook 클래스를 정의하라.
+
+Book 클래스는 일반 책의 정보를 저장한다.
+
+EBook 클래스는 전자 책의 정보를 저장한다.
+
+전자 책에는 보안 관련 키가 포함되어 있다.
+
+ 
+
+Book 클래스의 멤버 변수는 다음과 같다.
+
+1. 책의 제목
+
+2. ISBN번호
+
+3. 책의 정가
+
+Book 클래스의 멤버 함수는 다음과 같다.
+
+1. Book 클래스 생성자
+
+2. 책의 정보 출력
+
+ 
+
+EBook 클래스의 멤버 변수는 다음과 같다.
+
+1. 보안관련 key값
+
+EBook 클래스의 멤버 함수는 다음과 같다.
+
+1. EBook 클래스 생성자
+
+2. 책의 정보 출력
+
+ 
+책의 정가는 int형으로 선언한다.
+
+책의 제목, ISBN 번호, 보안관련 key값은 string형으로 선언한다.
+
+책의 제목, ISBN 번호, 보안관련 key값에는 공백이 포함되지 않는다.
+
+ 
+
+아래의 main 함수를 참고하여 클래스를 정의하라.
+
+int main()
+
+{
+
+    string name, isbn, key;
+
+    int price;
+
+    cin >> name >> isbn >> price;
+
+    Book book(name, isbn, price);
+
+    book.ShowBookInfo();
+
+    cin >> name >> isbn >> price >> key;
+
+    Ebook ebook(name, isbn, price, key);
+    ebook.ShowBookInfo();
+
+    return 0;
+}
+
+ 
+
+Input
+첫 번째 줄에는 일반 책의 정보를 입력 받는다.
+
+두 번째 줄에는 전자 책의 정보를 입력 받는다.
+
+ 
+
+Output
+1~3번째 줄에는 일반 책의 정보를 출력한다.
+
+4번째 줄부터는 전자 책의 정보를 출력한다.
+
+ 
+
+Sample Input
+C++_programming 555-1234-890-0 20000
+
+Algorithm_ebook 555-2534-335-1 8000 tn3dfee1fege
+
+ 
+
+Sample Output
+name: C++_programming
+
+ISBN: 555-1234-890-0
+
+price: 20000
+
+name: Algorithm_ebook
+
+ISBN: 555-2534-335-1
+
+price: 8000
+
+DRMkey: tn3dfee1fege
+------------------------------------------------
+
+#include<iostream>
+#include<string>
+using namespace std;
+ 
+class Book
+{
+private:
+    string name;
+    string isbn;
+    int price;
+ 
+public:
+    Book(string name, string isbn, int price) :name(name), isbn(isbn), price(price) {};
+ 
+    void ShowBookInfo()
+    {
+        cout << "name: " << name << endl;
+        cout << "ISBN: " << isbn << endl;
+        cout << "price: " << price << endl;
+    }
+};
+ 
+class Ebook : public Book
+{
+private:
+    string key;
+ 
+public:
+    Ebook(string name, string isbn, int price, string mykey) : Book(name, isbn, price), key(mykey) {};
+     
+    void ShowBookInfo()
+    {
+        Book::ShowBookInfo();
+        cout << "DRMkey: " << key << endl;
+    }
+ 
+};
+int main()
+ 
+{
+ 
+    string name, isbn, key;
+ 
+    int price;
+ 
+    cin >> name >> isbn >> price;
+ 
+    Book book(name, isbn, price);
+ 
+    book.ShowBookInfo();
+ 
+    cin >> name >> isbn >> price >> key;
+ 
+    Ebook ebook(name, isbn, price, key);
+    ebook.ShowBookInfo();
+ 
+    return 0;
+}
