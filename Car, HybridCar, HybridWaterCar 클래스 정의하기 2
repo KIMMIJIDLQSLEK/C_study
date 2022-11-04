@@ -1,0 +1,133 @@
+#include<iostream>
+using namespace std;
+
+class Car
+{
+protected:
+	int gas, velocity;
+
+public:
+	Car(int gas, int velocity) :gas(gas), velocity(velocity) {};
+
+	void Accel(int accel)
+	{
+		velocity += accel;
+		gas -= accel;
+		
+	}
+	void Break(int Break)
+	{
+		velocity -= Break;
+		if (velocity < 0)
+		{
+			velocity = 0;
+		}
+	}
+
+	void ShowCarstate()
+	{
+		if (gas < 0)
+		{
+			gas = 0;
+			velocity = 0;
+		}
+		cout << "remain gasoline: " << gas << endl;
+	}
+
+
+
+};
+class HybridCar:public Car
+{
+protected:
+	int elec;
+public:
+	HybridCar(int gas, int elec, int velocity) : Car(gas, velocity), elec(elec) {};
+	void Accel(int accel)
+	{
+		Car::Accel(accel);
+		elec -= accel;
+
+
+	}
+	void Break(int Break)
+	{
+		Car::Break(Break);
+	}
+
+	void ShowCarstate()
+	{
+		Car::ShowCarstate();
+		if (elec < 0)
+		{
+			elec = 0;
+			velocity = 0;
+
+		}
+		cout << "remain electricity: " << elec << endl;
+	}
+
+};
+
+class HybridWaterCar :public HybridCar
+{
+private:
+	int water;
+public:
+
+	HybridWaterCar(int gas, int elec, int water, int velocity) : HybridCar(gas, elec, velocity), water(water) {};
+	void Accel(int accel)
+	{
+		HybridCar::Accel(accel);
+		water -= accel;
+
+
+	}
+	void Break(int Break)
+	{
+		HybridCar::Break(Break);
+	}
+
+	void ShowCarState()
+	{
+		if (gas < 0 or elec < 0 or water < 0)
+		{
+			cout<<"gauge not enough"<<endl;
+		}
+		HybridCar::ShowCarstate();
+		if (water < 0)
+		{
+			water = 0;
+			velocity = 0;
+
+		}
+		cout << "remain water: " << water << endl;
+		cout << "current speed: " << HybridCar::Car::velocity << "km/h" << endl;
+	}
+};
+
+int main()
+
+{
+
+	int gas, elec, water, velocity, accel, Break;
+
+	cin >> gas >> elec >> water >> velocity;
+
+	HybridWaterCar car(gas, elec, water, velocity); // 차에 들어있는 가솔린, 전기, 물의 양과 속도 초기화
+
+	car.ShowCarState();                     // 차를 초기화한 후 차의 상태를 출력
+
+	cin >> accel;
+	car.Accel(accel);                           // 차를 accel만큼 가속시킴
+
+	car.ShowCarState();                     // 차를 가속시킨 후 차의 상태를 출력
+
+	cin >> Break;
+
+	car.Break(Break);                          // 차를 break만큼 감속시킴
+
+	car.ShowCarState();                     // 차를 감속시킨 후 차의 상태를 출력
+	return 0;
+
+}
