@@ -1,0 +1,41 @@
+#include<iostream>
+using namespace std;
+
+
+class Base
+{
+public:
+
+	virtual void MyFunc()
+	{
+		cout << "Base Class" << endl;
+	}
+};
+
+class Derived : public Base
+{
+public:
+
+	virtual void MyFunc()
+	{
+		cout << "Derived Class" << endl;
+	}
+};
+
+void Message(Base* pB)
+{
+	pB->MyFunc();
+
+}
+
+int main()
+{
+	Base B;
+	Derived D;
+
+	Message(&B);
+	Message(&D);
+
+	return 0;
+}
+
