@@ -1,0 +1,73 @@
+#include<iostream>
+using namespace std;
+
+class First
+{
+public:
+	void overloadFunc()
+	{
+		cout << "First Class" << endl;
+	}
+	virtual void virtualFunc()
+	{
+		cout << "First Class" << endl;
+	}
+};
+
+class Second :public First
+{
+public:
+	void overloadFunc()
+	{
+		cout << "Second Class" << endl;
+	}
+	virtual void virtualFunc()
+	{
+		cout << "Second Class" << endl;
+	}
+};
+
+class Third: public Second
+{
+public:
+	void overloadFunc()
+	{
+		cout << "Third Class" << endl;
+	}
+	virtual void virtualFunc()
+	{
+		cout << "Third Class" << endl;
+	}
+	
+};
+
+int main()
+
+{
+	Third* tptr = new Third();
+
+	Second* sptr = tptr;
+
+	First* fptr = sptr;
+
+
+
+	fptr->overloadFunc();
+
+	sptr->overloadFunc();
+
+	tptr->overloadFunc();
+
+
+
+	fptr->virtualFunc();
+
+	sptr->virtualFunc();
+
+	tptr->virtualFunc();
+
+
+
+	return 0;
+
+}
