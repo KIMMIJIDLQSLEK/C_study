@@ -1,0 +1,62 @@
+#include<iostream>
+using namespace std;
+ 
+class Shape {
+public:
+    virtual void GetCircumference(){}
+    virtual void GetArea(){}
+};
+ 
+class Circle:public Shape
+{
+private:
+    int r;
+public:
+    Circle(int r) :r(r) {};
+    void GetCircumference()
+    {
+        cout << 2 * 3.14 * r << " ";
+    }
+    void GetArea()
+    {
+        cout << 3.14 * r * r<<endl;
+    }
+ 
+};
+ 
+class Rectangle :public Shape
+{
+private:
+    int x;
+    int y;
+public:
+    Rectangle(int x, int y) :x(x), y(y) {};
+ 
+    void GetCircumference()
+    {
+        cout << 2*(x+y) << " ";
+    }
+    void GetArea()
+    {
+        cout.setf(ios::fixed);
+        cout.precision(2);
+        cout << x*y<<endl;
+    }
+ 
+};
+int main() {
+ 
+    int x, y, r;
+    cin >> x >> y >> r;
+ 
+    Shape* pc = new Circle(r);
+    Shape* pr = new Rectangle(x, y);
+ 
+    pr->GetCircumference();
+    pr->GetArea();
+    pc->GetCircumference();
+    pc->GetArea();
+ 
+    return 0;
+ 
+}
