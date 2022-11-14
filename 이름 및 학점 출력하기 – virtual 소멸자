@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+ 
+ 
+class Person {
+ 
+protected:
+ 
+    string name;
+ 
+public:
+ 
+    Person(string name) :name(name) {};
+ 
+ 
+};
+ 
+ 
+ 
+class Student : public Person {
+ 
+private:
+ 
+    char grade;
+ 
+public:
+ 
+    Student(string name, char grade) :Person(name), grade(grade) {
+        cout << grade << " " << name;
+    };
+    ~Student();
+ 
+};
+ 
+ 
+ 
+int main() {
+ 
+    string name;
+ 
+    char grade;
+ 
+    cin >> name >> grade;
+ 
+    Person* ptr = new Student(name, grade);
+ 
+    delete ptr;
+ 
+    return 0;
+ 
+}
