@@ -1,0 +1,38 @@
+#include<iostream>
+using namespace std;
+ 
+class Point
+{
+private:
+    int x,y;
+     
+public:
+    Point(int x, int y) :x(x), y(y) {};
+    void ShowPosition() {
+        cout << "[" << x << ", " << y << "]" << endl;
+    }
+    friend Point operator ! (const Point & p)
+    {
+        return Point(-p.x, -p.y);
+    }
+};
+ 
+int main()
+ 
+{
+ 
+    int x, y;
+ 
+    cin >> x >> y;
+ 
+    Point pos1(x, y);
+ 
+    pos1.ShowPosition();
+ 
+    Point pos2 = !pos1;
+ 
+    pos2.ShowPosition();
+ 
+    return 0;
+ 
+}
