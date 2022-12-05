@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+ 
+int main()
+ 
+{
+ 
+    int x, y;
+ 
+    cin >> x >> y;
+ 
+ 
+    try
+    {
+        cout << "+: " << x + y << endl;
+        cout << "-: " << x - y << endl;
+        cout << "*: " << x * y << endl;
+ 
+        if (y == 0)
+            throw 0;
+        cout << "/: " << x / y << endl;
+    }
+    catch(int expn)
+    {
+        cout << "Error: y is 0"<<endl;
+    }
+     
+ 
+    return 0;
+ 
+}
+제출자 : 201818167
+
